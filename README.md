@@ -10,7 +10,7 @@ Braincann is a project focused on analyzing brain imaging data related to addict
 - **data/**: A directory containing the raw and processed data files.
 - **results/**: A directory for storing the results of the analyses.
 - **masks/**: A directory containing the masks used for ROI analysis.
-- **MIDT/**: (If this subfolder is to be deleted, ensure it is not listed here.)
+- 
 
 ## Installation and Setup
 
