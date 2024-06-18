@@ -9,46 +9,18 @@ import seaborn as sns
 
 
 
+#Specify the derivatives folder path
+DataDir = '/Path/'
 
-DataDir = '/Volumes/LaCie/arush/analysis/braincann/MIDT/derivatives/fmriprep/'
 
-
-
-OutDir = '/Volumes/LaCie/arush/analysis/braincann/MIDT/code/'
+#output fodler for the .csv file
+OutDir = '/Path/'
 
 
 #enter number of sessions
 session = ['1']
 #enter subject IDS
-subID = ['sub-006','sub-007','sub-009','sub-020','sub-021','sub-025','sub-032','sub-074','sub-088',
-'sub-089',
-'sub-090',
-'sub-091',
-'sub-108',
-'sub-109',
-'sub-110',
-'sub-112',
-'sub-114',
-'sub-116',
-'sub-119',
-'sub-122',
-'sub-123',
-'sub-124',
-'sub-125',
-'sub-126',
-'sub-127',
-'sub-128',
-'sub-129',
-'sub-131',
-'sub-132',
-'sub-133',
-'sub-134',
-'sub-136',
-'sub-137',
-'sub-139',
-'sub-141',
-'sub-147',
-'sub-149',]
+subID = ['sub-006','sub-007','sub-009','sub-020','sub-021','sub-025','sub-032','sub-074','sub-088']]
 Percentage = np.zeros((len(subID), len(session)))
 meanFD =  np.zeros((len(subID), len(session)))
 GrtThan = np.zeros((len(subID), len(session)), dtype=int)
@@ -85,9 +57,6 @@ for i in range(len(subID)):
         print("Number of rows:", num_rows)
         IDs[i][j] = subID[i]
 
-
-
-
 data = {'subID': [item for sublist in IDs for item in sublist],
         'meanFD': [item for sublist in meanFD for item in sublist],
         'PercentageAbove02': [item for sublist in Percentage for item in sublist],
@@ -97,7 +66,7 @@ Table = pd.DataFrame(data)
 # Save DataFrame as CSV
 Table.to_csv(os.path.join(OutDir, 'FD_Stats_session1_v2.csv'), index=False)
 
-
+# Visualisation of the FD results
 # Create a box plot
 plt.figure(figsize=(8, 6))
 plt.boxplot(meanFD, vert=False)
@@ -105,10 +74,8 @@ plt.xlabel('Mean FD')
 plt.title('Box plot of Mean FD')
 plt.yticks([])
 plt.grid(True)
-plt.savefig(os.path.join(OutDir, 'box_plot.png'), bbox_inches='tight')
+#plt.savefig(os.path.join(OutDir, 'box_plot.png'), bbox_inches='tight')
 plt.show()
-
-
 
 # Create the violin plot
 plt.figure(figsize=(8, 6))
@@ -126,5 +93,5 @@ plt.xlabel('Mean FD Value')
 plt.ylabel('Density')
 plt.title('Ridgeline Plot of Mean FD Values')
 plt.grid(True)
-plt.savefig(os.path.join(OutDir, 'ridgeline_plot.png'), bbox_inches='tight')
+#plt.savefig(os.path.join(OutDir, 'ridgeline_plot.png'), bbox_inches='tight')
 plt.show()
