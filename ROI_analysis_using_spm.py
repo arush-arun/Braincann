@@ -125,8 +125,8 @@ def main():
     plt.figure(figsize=(10,6))
     sns.boxplot(data = mean_values_df, x='ROI', y='Mean_SPMT', hue='Group')
     plt.xticks(rotation=45)
+    plt.savefig(os.path.join(out_dir, f'{contrast}_boxplot.png'), bbox_inches='tight')
     plt.show()
-    #plt.savefig(os.path.join(out_dir, f'{contrast}_boxplot.png'), bbox_inches='tight')
     #print (mean_values_df)
     return mean_values_df, mean_values_dict
 if __name__ == '__main__':
