@@ -40,7 +40,7 @@ def perform_roi_analysis(control_subjects, cannabis_subjects, spmT_dir, mask_lis
 #Run for each ROI mask
     for mask in mask_list:
         roi_mask = f"/Volumes/LaCie/arush/analysis/uow/uow_MIDT/new_analysis_17042024/masks_from_em/{mask}"
-        masker = NiftiMasker(mask_img=roi_mask)
+        masker = NiftiMasker(mask_img=roi_mask, smoothing_fwhm=None)
         print(f"Processing mask: {roi_mask}")
         control_mean_spmT_values = extract_mean_spmT_values(control_subjects, spmT_dir, roi_mask, spm_file)
         cannabis_mean_spmT_values = extract_mean_spmT_values(cannabis_subjects, spmT_dir, roi_mask, spm_file)
@@ -128,6 +128,6 @@ def main():
     plt.show()
     #plt.savefig(os.path.join(out_dir, f'{contrast}_boxplot.png'), bbox_inches='tight')
     #print (mean_values_df)
-    return results_df, mean_values_dict
+    return mean_values_df, mean_values_dict
 if __name__ == '__main__':
-    main()
+	mean_values_df = main()
