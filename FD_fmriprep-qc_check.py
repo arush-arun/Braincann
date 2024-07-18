@@ -20,7 +20,7 @@ OutDir = '/Path/'
 #enter number of sessions
 session = ['1']
 #enter subject IDS
-subID = ['sub-006','sub-007','sub-009','sub-020','sub-021','sub-025','sub-032','sub-074','sub-088']]
+subID = ['sub-006','sub-007','sub-009','sub-020','sub-021','sub-025','sub-032','sub-074','sub-088']
 Percentage = np.zeros((len(subID), len(session)))
 meanFD =  np.zeros((len(subID), len(session)))
 GrtThan = np.zeros((len(subID), len(session)), dtype=int)
